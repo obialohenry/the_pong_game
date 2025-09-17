@@ -1,5 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
+import time
 
 screen = Screen()
 
@@ -11,12 +13,17 @@ screen.listen()
 
 r_paddle = Paddle((350,0))
 l_paddle = Paddle((-350,0))
+ball = Ball()
 
 screen.onkey(key='Up', fun=r_paddle.up)
 screen.onkey(key='Down', fun=r_paddle.down)
+screen.onkey(key='w', fun=l_paddle.up)
+screen.onkey(key='s', fun=l_paddle.down)
 
 game_is_on = True
 while game_is_on:
     screen.update()
+    time.sleep(0.1)
+    ball.move()
 
 screen.exitonclick()
